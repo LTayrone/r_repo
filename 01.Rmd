@@ -1,0 +1,116 @@
+## ---
+
+## Formação Cientista de Dados
+
+#### Ativando ambiente virual no R
+
+```{r}
+renv::init()
+```
+
+```{r}
+#Carregamento dos pacotes
+install.packages("e1071")
+library(e1071)
+```
+
+```{r}
+#descarregar o pacote
+detach("package:e1071", unload=TRUE)
+remove.packages("e1071")
+```
+
+#### Diretorio de Trabalho
+
+```{r}
+getwd()
+#setwd("c:\\dados")
+```
+
+#### Tipos do objeto
+
+```{r}
+class(iris)
+```
+
+#### Salvando um objeto
+
+```{r}
+#clona
+iristeste = iris
+#salva
+save(iristeste, file="iristeste.Rdata")
+#remove do R
+rm(iristeste)
+#teste de remoção
+iristeste
+```
+
+#### Carrega os dados
+
+```{r}
+#Carrega o objeto do disco
+load(file="iristeste.Rdata")
+#teste
+iristeste
+```
+
+#### Vetor e gráfico básico
+
+```{r}
+x = c(12,34,56,79)
+y = c(1,6,9,14)
+plot(x,y)
+```
+
+#### Declaração de variaveis
+
+```{r}
+#declaração implicita numérico
+delta = 8
+class(delta)
+```
+
+#### L declara como inteiro
+
+```{r}
+delta = 8L
+class(delta)
+```
+
+#### Outros tipos
+
+```{r}
+logico = TRUE
+logico = F
+caractere = "Texto"
+caractere = 'Texto'
+class(caractere)
+class(logico)
+```
+
+#### Operações matemáticas
+
+```{r}
+c = 2
+d = 4
+(c + d) * d
+e = (c + d) * d
+e
+
+```
+
+#### Testes lógicos
+
+```{r}
+a = 1
+b = 2
+a < b
+a == b
+```
+
+#### Raiz Quadrada
+
+```{r}
+sqrt(2500)
+```
