@@ -1,0 +1,245 @@
+---
+title: "R Notebook"
+author: "Lucas Tayrone Moreira Ribeiro"
+---
+
+### 1 - Instalação dos Pacotes e Chamada das Bibliotecas
+
+```{r}
+install.packages("tidyverse")
+library(tidyverse)
+
+install.packages("ipeadatar")
+library(ipeadatar)
+```
+
+### 2 - Ciclo de Vida de Análise de dados
+
+-   Importação (readr, readxl, httr, curl, rvest, sidrar, rbcb)
+
+-   Organização (tidyr, tibble, tsbble)
+
+-   Tratamento (dplyr, stringr, forcats, lubridate, glue, janitor)
+
+-   Visualização (ggplot2, plotly, highcharter)
+
+-   Modelagem (fable, feasts, easystats, forecast, caret, tidymodels)
+
+-   Comunicação (markdown, quarto, shiny, flexdashboard)
+
+-   Automatização (github actions)
+
+### 3 - Tidyverse - Coleção de pacotes favorita no R
+
+```{r}
+install.packages("magrittr")
+library(magrittr)
+
+1:10 %>%
+  sum() %>%
+  sqrt() %>%
+  log()
+
+```
+
+E se você precisar que a expressão do lado esquerdo seja passada para um argumento que não o primeiro da expressão do lado direito? Nestes casos, use o **marcador** `.` para apontar onde você quer que o valor seja inserido:
+
+```{r}
+# Usando marcador .
+cars %>%
+  head(n = 30) %>%
+  lm(speed~dist,  data = .)
+  
+```
+
+### Criando Funções no R
+
+Para criar funções no **R**, você deve utilizar a estrutura básica a seguir:
+
+`nome_da_funcao <- function(argumento1, argumento2, ...) {`
+
+`# Corpo da função (instruções)`
+
+`resultado <- argumento1 + argumento2 # Exemplo de operação   return(resultado) # Retorna o resultado }`
+
+```{r}
+# criando uma função 
+soma_dois <- function(a,b ){
+  resultado <- a + b
+  return(resultado)
+}
+```
+
+```{r}
+soma_dois(12, 42)
+```
+
+### Importando arquivos CSV
+
+```{r}
+library(readr)
+
+# Dados ----------------------------------
+tabela <- read_csv(file = "dados/dados.csv")
+tabela
+```
+
+```{# Importação de CSV com separador ;}
+
+tabela_01 = read_csv2(file = "dados/dados_pv.csv" )
+```
+
+```{r}
+# Importação com encoding padrão do R (EUA)
+tabela_codificacao_eua <- read_csv2("dados/votacao_secao_2022_AC.csv")
+```
+
+```{r}
+tabela_codificacao_eua
+```
+
+```{r}
+#Importação com encodign compativel com o CSV (BR)
+tabela_codificacao_eua <- read_csv2(
+  file = "dados/votacao_secao_2022_AC.csv",
+  locale = locale(encoding = "latin1")
+)
+
+tabela_codificacao_eua
+```
+
+### Analisando dados do BCB
+
+```{r}
+# Carregando os pacotes necessarios
+library(rbcb)
+```
+
+
+#### Coletando os dados de 1 série do SGS (tx. Câmbio)
+
+```{r}
+
+dados_sgs <- get_series(code = 1, start_date = "2020-01-01")
+
+```
+
+```{r}
+dados_sgs
+```
+#### Coleta de multiplas séries do SGS
+
+```{r}
+dados_sgs_mult <- get_series(
+  code = c ("cambio" = 1, "pib" = 22099),
+  start_date = "2020-01-01"
+)
+```
+### Coleta de dados de Expectativa de Mercado
+
+```{r}
+dados_expectativas <- get_market_expectations(
+  type = "annual",
+  indic = c("IPCA Livres", "IPCA Administrados"),
+  start_date = "2021-01-01"
+)
+```
+
+
+### Coleta de dados IPEAData
+
+```{r}
+library(ipeadatar)
+```
+
+
+Etapas:
+  
+- Obter o código da série temporal de interesse
+
+```{r}
+codigos_ipeadata <- available_series()
+
+```
+
+- Coleta os dados da série do IPEADATA
+
+```{r}
+	
+dados_caged <- ipeadata(code = "CAGED12_SALDONAJU12")
+
+```
+
+```{r}
+# Coleta de multiplos dados
+dados_caged_mult <- ipeadata(
+  code = c( "CAGED12_SALDONAJU12", "CAGED12_ADMISN12", "CAGED12_DESLIGN12")
+)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
