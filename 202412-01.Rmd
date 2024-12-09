@@ -52,7 +52,7 @@ cars %>%
   
 ```
 
-### Criando Funções no R
+### 4 - Criando Funções no R
 
 Para criar funções no **R**, você deve utilizar a estrutura básica a seguir:
 
@@ -74,7 +74,7 @@ soma_dois <- function(a,b ){
 soma_dois(12, 42)
 ```
 
-### Importando arquivos CSV
+### 5 - Importando arquivos CSV
 
 ```{r}
 library(readr)
@@ -84,8 +84,8 @@ tabela <- read_csv(file = "dados/dados.csv")
 tabela
 ```
 
-```{# Importação de CSV com separador ;}
-
+```{r}
+# Importação de CSV com separador ;
 tabela_01 = read_csv2(file = "dados/dados_pv.csv" )
 ```
 
@@ -108,13 +108,12 @@ tabela_codificacao_eua <- read_csv2(
 tabela_codificacao_eua
 ```
 
-### Analisando dados do BCB
+### 6 - Analisando dados do BCB
 
 ```{r}
 # Carregando os pacotes necessarios
 library(rbcb)
 ```
-
 
 #### Coletando os dados de 1 série do SGS (tx. Câmbio)
 
@@ -127,6 +126,7 @@ dados_sgs <- get_series(code = 1, start_date = "2020-01-01")
 ```{r}
 dados_sgs
 ```
+
 #### Coleta de multiplas séries do SGS
 
 ```{r}
@@ -135,7 +135,8 @@ dados_sgs_mult <- get_series(
   start_date = "2020-01-01"
 )
 ```
-### Coleta de dados de Expectativa de Mercado
+
+### 7 - Coleta de dados de Expectativa de Mercado
 
 ```{r}
 dados_expectativas <- get_market_expectations(
@@ -145,24 +146,22 @@ dados_expectativas <- get_market_expectations(
 )
 ```
 
-
-### Coleta de dados IPEAData
+### 8 - Coleta de dados IPEAData
 
 ```{r}
 library(ipeadatar)
 ```
 
-
 Etapas:
-  
-- Obter o código da série temporal de interesse
+
+-   Obter o código da série temporal de interesse
 
 ```{r}
 codigos_ipeadata <- available_series()
 
 ```
 
-- Coleta os dados da série do IPEADATA
+-   Coleta os dados da série do IPEADATA
 
 ```{r}
 	
@@ -178,68 +177,4 @@ dados_caged_mult <- ipeadata(
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 9 - Trabalhando com SQL
